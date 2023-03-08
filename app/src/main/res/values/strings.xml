@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">RunningTracker</string>
+    <string name="google_maps_key">Enter Your Google Map Key</string>
+</resources>
