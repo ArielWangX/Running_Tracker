@@ -1,4 +1,4 @@
-package com.example.runningtracker.ui.theme
+package com.example.runningtracker.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes

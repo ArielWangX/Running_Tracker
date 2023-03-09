@@ -1,4 +1,4 @@
-package com.example.runningtracker.ui.theme
+package com.example.runningtracker.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle
