@@ -1,31 +1,32 @@
 package com.example.runningtracker
 
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.runningtracker.R
-import com.example.runningtracker.theme.RunningTrackerTheme
+import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : ComponentActivity() {
+class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-//        setContent {
-//            RunningTrackerTheme {
-//                // A surface container using the 'background' color from the theme
-//                Surface(
-//                    modifier = Modifier.fillMaxSize(),
-//                    color = MaterialTheme.colors.background
-//                ) {
-//                    Greeting("Android")
-//                }
-//            }
-//        }
 
+        setSupportActionBar(findViewById(R.id.toolbar))
+
+        val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
+        val navController = this.findNavController(R.id.navHostFragment)
+        bottomNavigationView.setupWithNavController(navController)
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when(destination.id) {
+                R.id.settingsFragment, R.id.runFragment, R.id.statisticsFragment ->
+                    bottomNavigationView.visibility = View.VISIBLE
+                else -> bottomNavigationView.visibility = View.GONE
+            }
+        }
     }
 }
